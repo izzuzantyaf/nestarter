@@ -1,7 +1,7 @@
 {
-  "name": "nestjs-mongodb",
+  "name": "nestjs-starter",
   "version": "0.1.0",
-  "description": "Nestjs MongoDB",
+  "description": "Nestjs starter app",
   "author": "Izzu Zantya Fawwas",
   "private": true,
   "license": "MIT",

@@ -5,8 +5,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   const config = new DocumentBuilder()
-    .setTitle('Nestjs MongoDB OpenAPI')
-    .setDescription('Nestjs MongoDB API Documentation')
+    .setTitle('Nestjs starter app OpenAPI')
+    .setDescription('Nestjs starter app API Documentation')
     .setVersion('1.0.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
