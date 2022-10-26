@@ -8,3 +8,14 @@ export class CreateUserDto {
   @ApiProperty()
   password: string;
 }
+
+export class UpdateUserDto {
+  @ApiProperty()
+  id: number | string;
+  @ApiProperty()
+  name?: string;
+  @ApiProperty()
+  email?: string;
+  @ApiProperty()
+  password?: string;
+}

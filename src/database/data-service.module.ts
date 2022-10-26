@@ -1,17 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
 import { DataServiceService } from './data-service.service';
-import { User, UserSchema } from '../core/entities/user.entity';
+import { PrismaModule } from './prisma/prisma.module';
+import { MongoModule } from './mongo/mongo.module';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([
-      { name: User.name, schema: UserSchema },
-    ]),
-    ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGO_URI),
-  ],
+  imports: [MongoModule],
   providers: [DataServiceService],
   exports: [DataServiceService],
 })

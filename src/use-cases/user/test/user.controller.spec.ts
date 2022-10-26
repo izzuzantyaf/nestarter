@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UserController } from '../user.controller';
 import { SuccessfulResponse } from 'src/core/dtos/response.dto';
 import { UserModule } from 'src/use-cases/user/user.module';
-import { User } from 'src/core/entities/user.entity';
+import { User } from 'src/use-cases/user/entities/user.entity';
 import { faker } from '@faker-js/faker';
 import { BadRequestException, ConflictException } from '@nestjs/common';
 
@@ -81,15 +81,28 @@ describe('UserController', () => {
     });
   });
 
+  // describe('update()', () => {
+  //   let storedUser: User;
+  //   beforeAll(async () => {
+  //     const fakeUser = createFakeUser();
+  //     storedUser = (await controller.create(fakeUser)).data;
+  //   });
+  //   it('harus berhasil update user', async () => {});
+  //   it('harus gagal update user karena id tidak valid', async () => {});
+  //   it('harus gagal karena nama melebihi batas maksimum', async () => {});
+  //   it('harus gagal karena email tidak valid', async () => {});
+  //   it('harus gagal karena password tidak sesuai syarat', async () => {});
+  // });
+
   describe('delete()', () => {
-    let userId: string;
+    let userId: string | number;
     beforeAll(async () => {
       const storedfakeUser = (await controller.create(createFakeUser()))
         .data as User;
-      userId = storedfakeUser._id;
+      userId = storedfakeUser.id;
     });
     it(`harus berhasil menghapus user dan return object bertipe ${SuccessfulResponse.name}`, async () => {
-      const response = await controller.delete(userId);
+      const response = await controller.delete(userId as string);
       expect(response).toBeInstanceOf(SuccessfulResponse);
     });
     it('harus gagal menghapus user karena id tidak valid', async () => {
