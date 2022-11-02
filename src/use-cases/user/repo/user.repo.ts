@@ -1,10 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { PrismaClientService } from '../../../database/prisma/prisma-client.service';
 import { IUserRepo } from 'src/use-cases/user/interfaces/user-repo.interface';
 import { User } from 'src/use-cases/user/entities/user.entity';
 import { CreateUserDto, UpdateUserDto } from 'src/use-cases/user/dto/user.dto';
 import { isNotEmpty } from 'class-validator';
-import { PrismaClientService } from 'src/database/prisma/prisma-client.service';
-// import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class UserRepository implements IUserRepo {
@@ -28,7 +27,12 @@ export class UserRepository implements IUserRepo {
   }
 
   async findByEmail(email: string): Promise<User | null> {
-    const user = await this.prisma.user.findUnique({ where: { email } });
+    let user;
+    try {
+      user = await this.prisma.user.findUnique({ where: { email } });
+    } catch (error) {
+      this.logger.debug(error);
+    }
     return isNotEmpty(user) ? new User(user) : null;
   }
 
@@ -53,7 +57,9 @@ export class UserRepository implements IUserRepo {
       deletedUser = await this.prisma.user.delete({
         where: { id: parseInt(id as string) },
       });
-    } catch (error) {}
+    } catch (error) {
+      this.logger.debug(error);
+    }
     return isNotEmpty(deletedUser) ? new User(deletedUser) : null;
   }
 

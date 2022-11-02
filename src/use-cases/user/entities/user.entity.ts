@@ -124,7 +124,7 @@ export class User {
   }
 
   /**
-   * Compare user's password against user's password in the database
+   * Compare user password against user password in the database
    * @param passwordToBeVerified Plain text password intended to be verified
    * @returns True if plain text password is matched
    */
