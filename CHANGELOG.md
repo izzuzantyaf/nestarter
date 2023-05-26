@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/izzuzantyaf/nestarter/compare/v0.2.0...v0.3.0) (2023-05-26)
+
+
+### Features
+
+* Casual refactor add changelog generator ([#3](https://github.com/izzuzantyaf/nestarter/issues/3)) ([54178b2](https://github.com/izzuzantyaf/nestarter/commit/54178b201b5e5b30cd70e2d462743881c86e8329))
+
+
+
 # [0.2.0](https://github.com/izzuzantyaf/nestarter/compare/v0.1.0...v0.2.0) (2022-11-02)
 
 
