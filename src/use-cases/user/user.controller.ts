@@ -26,7 +26,7 @@ const fakeUser = {
 };
 
 @ApiTags('user')
-@Controller('api/user')
+@Controller('user')
 export class UserController {
   private readonly logger = new Logger(UserController.name);
 
